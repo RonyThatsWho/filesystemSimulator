@@ -1,6 +1,5 @@
 #import utils
 
-
 class Folder:
 	def __init__ (self, name, path, container = None):
 		self.name = name
@@ -29,10 +28,6 @@ class File:
 
 
 def ls(folder):
-	#print ("LS Called")
-	#for x in folder.contents:
-		#print (x.name)
-	#	print(x)
 	for f in folder.folders:
 		print (f)
 	for f in folder.files:
@@ -44,8 +39,6 @@ def mkdir (name, folder):
 			print (name + ": File exists")
 			return
 
-	#print ("Creating folder " + name)
-	#folder.contents.append(Folder(name, folder.path, folder))
 	folder.contents.append(name)
 	folder.folders.append(Folder(name, folder.path, folder))
 	folder.folders.sort()
@@ -70,23 +63,8 @@ def cd (root, source, path):
 	if path[0] == '/':
 		current = root
 		path = path[1:]
-	# 	print ("path starts from root")
-	# 	print (root.name)
-	# 	print(len(root.contents))
-	# 	for n in root.contents:
-	# 		print (n.name)
-
-
-	# print ("\n**current**")
-	# print (current.name)
-	# print(len(current.contents))
-	# for n in current.contents:
-	# 	print (n.name)
 
 	splitPath = path.split('/')
-	# print (splitPath)
-	# print (len(splitPath))
-
 
 	for i in range(len(splitPath)):
 		found = False
@@ -100,19 +78,15 @@ def cd (root, source, path):
 
 		else:
 			for x in current.folders:
-				# print ("i - " + str(i) + ", " + splitPath[i] + " -> " + x.name )
 				if splitPath[i] == x.name and isinstance(x, Folder):
 					current = x
 					found = True
 					break
  
-
-
 		if found == False:
 			print ("No such file or directory")
 			return source 
 
-	#print("returning folder " + current.name)
 	return current
 
 
