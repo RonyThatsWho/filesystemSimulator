@@ -13,31 +13,34 @@ root = None
 def parse(commands, folder):
 
      #print(root)
-	com = commands[0]
-	if com == "ls":
-		src.ls(folder)
-		return folder
+        if len(commands) == 0:
+                return folder
 
-	elif com == "touch" and len(commands) == 2:
-		src.touch (commands[1], folder)
-		return folder
+        com = commands[0]
+        if com == "ls":
+                src.ls(folder)
+                return folder
 
-	elif com == "mkdir" and len(commands) == 2:
-		src.mkdir(commands[1], folder)
-		return folder
+        elif com == "touch" and len(commands) == 2:
+                src.touch (commands[1], folder)
+                return folder
 
-	elif com == "cd" and len(commands) == 2:
-		return src.cd(root, folder, commands[1])
+        elif com == "mkdir" and len(commands) == 2:
+                src.mkdir(commands[1], folder)
+                return folder
 
-	elif com == "clear" and len(commands) == 1:
-		return src.clear(root)
+        elif com == "cd" and len(commands) == 2:
+                return src.cd(root, folder, commands[1])
 
-	elif com == "quit" and len(commands) == 1:
-		return None
+        elif com == "clear" and len(commands) == 1:
+                return src.clear(root)
 
-	else:
-		print("invalid command")
-		return folder
+        elif com == "quit" and len(commands) == 1:
+                return None
+
+        else:
+                print("invalid command")
+                return folder
                 
 
 def main():
@@ -55,7 +58,7 @@ def main():
         if directory == None:
             run = False
             
-	
+        
 
 if __name__ == "__main__":
-	main()
+        main()
