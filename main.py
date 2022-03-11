@@ -30,7 +30,7 @@ def parse(commands, folder):
 		return src.cd(root, folder, commands[1])
 
 	elif com == "clear" and len(commands) == 1:
-		return root
+		return src.clear(root)
 
 	elif com == "quit" and len(commands) == 1:
 		return None
